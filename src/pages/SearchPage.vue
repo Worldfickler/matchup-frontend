@@ -23,11 +23,17 @@
       v-model:main-active-index="activeIndex"
       :items="tagList"
   />
+  <div style="padding: 12px">
+    <van-button block type="primary" @click="doSearchResult">搜索</van-button>
+  </div>
 </template>
 
 <script setup>
   import { ref } from 'vue';
   import {showToast} from "vant";
+  import {useRouter} from "vue-router";
+
+  const router = useRouter();
 
   const searchText = ref('');
 
@@ -79,5 +85,17 @@
     activeIds.value = activeIds.value.filter(item => {
       return item !== tag;
     })
+  }
+
+  /**
+   * 执行搜索
+   */
+  const doSearchResult = () => {
+    router.push({
+      path: '/search/list',
+      query: {
+        tags: activeIds.value
+      }
+    });
   }
 </script>
