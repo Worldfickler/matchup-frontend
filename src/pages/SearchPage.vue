@@ -30,7 +30,6 @@
 
 <script setup>
   import { ref } from 'vue';
-  import {showToast} from "vant";
   import {useRouter} from "vue-router";
 
   const router = useRouter();

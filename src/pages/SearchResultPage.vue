@@ -8,9 +8,9 @@
 import {onMounted, ref} from "vue";
 import {useRoute} from "vue-router";
 import myAxios from "../plugins/myAxios.ts";
-import {showFailToast, showSuccessToast} from "vant";
 import qs from 'qs';
 import UserCardList from "../components/UserCardList.vue";
+import {Toast} from "vant";
 
   const route = useRoute();
 
@@ -30,13 +30,13 @@ import UserCardList from "../components/UserCardList.vue";
     })
         .then(function (response) {
           console.log('/user/search/tags success', response);
-          showSuccessToast('请求成功');
+          Toast.success('请求成功');
           console.log(response);
           return response?.data;
         })
         .catch(function (error) {
           console.log('/user/search/tags error', error);
-          showFailToast('请求失败');
+          Toast.fail('请求失败');
         })
     if (userListData) {
       userListData.forEach(user => {

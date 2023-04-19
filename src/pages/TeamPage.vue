@@ -1,11 +1,21 @@
 <template>
-  队伍
+  <div id="teamPage">
+    <van-button type="primary" @click="doJoinTeam">加入队伍</van-button>
+  </div>
 </template>
 
-<script>
-export default {
-  name: "Team"
+<script setup>
+
+import {useRouter} from "vue-router";
+
+const router = useRouter()
+
+const doJoinTeam = () => {
+  router.push({
+    path: "/team/add"
+  })
 }
+
 </script>
 
 <style scoped>
