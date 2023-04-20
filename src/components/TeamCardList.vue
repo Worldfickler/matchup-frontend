@@ -26,6 +26,7 @@
       </template>
       <template #footer>
         <van-button size="mini" plain type="primary" @click="doJoinTeam(team.id)">加入队伍</van-button>
+        <van-button v-if="team.userId == currentUser?.id" size="mini" plain type="primary" @click="doUpdateTeam(team.id)">更新队伍</van-button>
       </template>
     </van-card>
   </div>
@@ -37,6 +38,11 @@ import {TeamType} from "../models/team";
 import {teamStatusEnum} from "../constants/team";
 import myAxios from "../plugins/myAxios";
 import {Toast} from "vant";
+import {onMounted, ref} from "vue";
+import {getCurrentUser} from "../service/user";
+import {useRouter} from "vue-router";
+
+const router = useRouter();
 
 interface TeamCardListProps {
   teamList: TeamType[];
@@ -44,7 +50,13 @@ interface TeamCardListProps {
 
 const props = defineProps<TeamCardListProps>();
 
-//队伍列表加入队伍
+const currentUser = ref();
+// 获取用户信息
+onMounted(async () => {
+  currentUser.value = await getCurrentUser();
+})
+
+// 队伍列表加入队伍
 const doJoinTeam = async(id: number) =>{
   const res = await myAxios.post("/team/join",{
     teamId : id
@@ -56,6 +68,16 @@ const doJoinTeam = async(id: number) =>{
     //@ts-ignore
     Toast.fail("加入失败" + (res.description ? `， ${res.description} `:''));
   }
+}
+
+// 更新队伍
+const doUpdateTeam = (id: number) => {
+  router.push({
+    path: '/team/update',
+    query:{
+      id,
+    }
+  })
 }
 
 </script>
