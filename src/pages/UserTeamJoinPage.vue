@@ -1,7 +1,6 @@
 <template>
   <div id="teamPage">
     <van-search v-model="searchText" placeholder="搜索队伍" @search="onSearch" />
-    <van-button type="primary" @click="doJoinTeam">创建队伍</van-button>
     <team-card-list :team-list="teamList" />
     <van-empty v-if="teamList?.length < 1" description="结果为空" />
   </div>
@@ -27,7 +26,7 @@ const doJoinTeam = () => {
 const teamList = ref([]);
 
 const listTeam = async (val = '') => {
-  const res = await myAxios.get("/team/list", {
+  const res = await myAxios.get("/team/list/my/join", {
     params: {
       searchText: val,
       pageNum: 1,

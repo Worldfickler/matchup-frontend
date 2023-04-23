@@ -1,6 +1,6 @@
 <template>
   <van-nav-bar
-      title="标题"
+      :title="title"
       left-text="返回"
       right-text="按钮"
       left-arrow
@@ -8,7 +8,7 @@
       @click-right="onClickRight"
   >
     <template #right>
-      <van-icon name="search" size="18" />
+      <van-icon name="search" size="18"/>
     </template>
   </van-nav-bar>
   <div id="content">
@@ -21,18 +21,33 @@
   </van-tabbar>
 </template>
 
-<script setup>
-  import { ref } from 'vue';
-  import {useRouter} from "vue-router";
-  import {Toast} from "vant";
+<script setup lang="ts">
+import {ref} from 'vue';
+import {useRouter} from "vue-router";
+import routes from "../config/route";
 
-  const router = useRouter();
+const router = useRouter();
 
-  const onClickLeft = () => alert(router.back());
-  const onClickRight = () => alert(router.push('/search'));
+const DEFAULT_TITLE = '伙伴匹配';
+const title = ref(DEFAULT_TITLE);
 
-  const active = ref('index');
-  const onChange = (index) => Toast(`标签 ${index}`);
+/**
+ * 根据路由切换标题
+ */
+router.beforeEach((to, from) => {
+  const toPath = to.path;
+  const route = routes.find((route) => {
+    return toPath == route.path;
+  })
+  title.value = route?.title ?? DEFAULT_TITLE;
+})
+
+const onClickLeft = () => router.back();
+const onClickRight = () => router.push('/search');
+
+// const active = ref('index');
+// const onChange = (index) => Toast(`标签 ${index}`);
+
 </script>
 
 <style scoped>
