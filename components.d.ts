@@ -19,7 +19,6 @@ declare module '@vue/runtime-core' {
     VanCell: typeof import('vant/es')['Cell']
     VanCellGroup: typeof import('vant/es')['CellGroup']
     VanCol: typeof import('vant/es')['Col']
-    VanDatePicker: typeof import('vant/es')['DatePicker']
     VanDatetimePicker: typeof import('vant/es')['DatetimePicker']
     VanDivider: typeof import('vant/es')['Divider']
     VanEmpty: typeof import('vant/es')['Empty']
@@ -27,7 +26,6 @@ declare module '@vue/runtime-core' {
     VanForm: typeof import('vant/es')['Form']
     VanIcon: typeof import('vant/es')['Icon']
     VanNavBar: typeof import('vant/es')['NavBar']
-    VanPickerGroup: typeof import('vant/es')['PickerGroup']
     VanPopup: typeof import('vant/es')['Popup']
     VanRadio: typeof import('vant/es')['Radio']
     VanRadioGroup: typeof import('vant/es')['RadioGroup']
@@ -36,10 +34,11 @@ declare module '@vue/runtime-core' {
     VanSkeleton: typeof import('vant/es')['Skeleton']
     VanStepper: typeof import('vant/es')['Stepper']
     VanSwitch: typeof import('vant/es')['Switch']
+    VanTab: typeof import('vant/es')['Tab']
     VanTabbar: typeof import('vant/es')['Tabbar']
     VanTabbarItem: typeof import('vant/es')['TabbarItem']
+    VanTabs: typeof import('vant/es')['Tabs']
     VanTag: typeof import('vant/es')['Tag']
-    VanTimePicker: typeof import('vant/es')['TimePicker']
     VanTreeSelect: typeof import('vant/es')['TreeSelect']
   }
 }
