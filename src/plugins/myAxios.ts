@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const isDev = process.env.NODE_ENV === 'development';
+
 const myAxios = axios.create({
-    baseURL: 'http://localhost:8080/api',
+    baseURL: isDev ? 'http://localhost:8080/api' : '线上地址',
 });
 
 myAxios.defaults.withCredentials = true; // 请求携带 cookie
