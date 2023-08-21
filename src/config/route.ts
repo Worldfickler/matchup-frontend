@@ -27,6 +27,7 @@ const routes = [
     { path: '/user/update', title:'更新信息', component: UserUpdatePage },
     { path: '/user/team/join', title:'加入队伍', component: UserTeamJoinPage },
     { path: '/user/team/create', title:'创建队伍', component: UserTeamCreatePage },
+
 ]
 
 export default routes;
