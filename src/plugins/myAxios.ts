@@ -3,8 +3,8 @@ import axios from "axios";
 const isDev = process.env.NODE_ENV === 'development';
 
 const myAxios = axios.create({
-    // baseURL: isDev ? 'http://localhost:8080/api' : 'http://matchup.user-center.icu',
-    baseURL: 'http://matchup.user-center.icu',
+    // baseURL: isDev ? 'http://localhost:8080/api' : 'http://matchup-backend.user-center.icu/api',
+    baseURL: 'https://matchup-backend.user-center.icu/api',
 });
 
 myAxios.defaults.withCredentials = true; // 请求携带 cookie
